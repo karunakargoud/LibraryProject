@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LibraryProject.Models.Library>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Library Entries</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Book Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Student.Name  
+                </td>
+                <td>
+                    @item.Book.Name     
+                </td>
+                <td>
+                    @item.StartDate.ToString("dd-MM-yyyy HH:mm:ss") 
+                </td>
+                <td>
+                    @item.EndDate.ToString("dd-MM-yyyy HH:mm:ss")    
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LibraryId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.LibraryId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LibraryId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
